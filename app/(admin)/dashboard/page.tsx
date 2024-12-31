@@ -10,7 +10,7 @@ import Image from "next/image";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
-import { setTask, setTasks } from "@store/slices/tasksSlice";
+import { setTask, setTasks, setCheck } from "@store/slices/tasksSlice";
 import { ITask } from "@interfaces/ITask";
 import BasicStates from "@components/TableExtensions/BasicStates";
 import BasicActions from "@components/TableExtensions/BasicActions";
@@ -33,6 +33,7 @@ const Dashboard = () => {
   const [openModalClose, setOpenModalClose] = useState<boolean>(false);
 
   useEffect(() => {
+    dispatch(setCheck(checked));
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checked]);

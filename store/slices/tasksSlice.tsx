@@ -1,17 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { State } from "@enums/StateEnum";
 
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
     dataSelected: null,
     data: [],
+    check: true,
   },
   reducers: {
+    setCheck: (state, action) => void (state.check = action.payload),
     setTasks: (state, action) => void (state.data = action.payload),
     setTask: (state, action) => void (state.dataSelected = action.payload),
     remove: (state) => void (state.dataSelected = null),
     addTask: (state, action) => {
-      state.data.push(action.payload);
+      if (state.check && action.payload.state === State.COMPLETED) {
+        state.data.push(action.payload);
+      }
+
+      if (!state.check && action.payload.state === State.TO_DO) {
+        state.data.push(action.payload);
+      }
     },
     updateTask: (state, action) => {
       const { _id, updatedTask } = action.payload;
@@ -32,6 +41,13 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { setTasks, setTask, remove, addTask, updateTask, removeTask } =
-  tasksSlice.actions;
+export const {
+  setCheck,
+  setTasks,
+  setTask,
+  remove,
+  addTask,
+  updateTask,
+  removeTask,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;
