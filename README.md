@@ -19,7 +19,7 @@ npm run coverage
 
 ## Peculiarities
 
-I have used next-auth to control the session, primeReact and primeFlex to styles and components and redux.
+I have used next-auth to control the session, primeReact and primeFlex to styles and redux.
 
 ## Credentials
 
