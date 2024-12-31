@@ -23,8 +23,8 @@ I have used next-auth to control the session, primeReact and primeFlex to styles
 
 ## Credentials
 
-email: test@test.com
-password: 123456
+email: jmob614@gmail.com
+password: 123456789
 
 ## Port
 
